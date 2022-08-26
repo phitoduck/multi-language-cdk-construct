@@ -30,7 +30,7 @@ publish-from-local-machine:
         --format pypi \
         --query repositoryEndpoint \
         --output text)
-    npx projen release
+    npx projen release:trunk
     
 
 publish-ci:
