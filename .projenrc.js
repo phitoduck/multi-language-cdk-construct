@@ -25,4 +25,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   stability: "experimental" // this value is arbitrary
 });
+
+project.gitignore.addPatterns("cdk.out/")
+
 project.synth();
