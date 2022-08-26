@@ -21,35 +21,10 @@ const PACKAGE_META = {
   defaultReleaseBranch: 'main',
   name: 'multi-language-construct',
   repositoryUrl: 'https://github.com/eric.riddoch/multi-language-construct.git',
-  description: "Eric's first ever multi-language construct.",
-  packageName: 'multi-language-construct-eric', /* The "name" in package.json. */
-  stability: 'experimental', // this value is arbitrary
-}
 
-const TYPESCRIPT_PROJECT_DEPENDENCIES = {
-  deps: [
-    '@aws-cdk/aws-apigatewayv2-alpha',
-    '@aws-cdk/aws-apigatewayv2-integrations-alpha',
-  ],
-  devDeps: [], /* Build dependencies for this module. */
-}
-
-const PROJECT = new awscdk.AwsCdkConstructLibrary({
-  cdkVersion: CDK_VERSION,
-  publishDryRun: true,
-  ...PRIVATE_NPM_CONFIG,
-  publishToPypi: PRIVATE_PYPI_CONFIG,
-  ...PACKAGE_META,
-  ...TYPESCRIPT_PROJECT_DEPENDENCIES,
+  // deps: [],                /* Runtime dependencies of this module. */
+  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
+  // devDeps: [],             /* Build dependencies for this module. */
+  // packageName: undefined,  /* The "name" in package.json. */
 });
-
-PROJECT.gitignore.addPatterns('cdk.out/');
-PROJECT.gitignore.addPatterns('**venv');
-
-PROJECT.addPackageIgnore('cdk.out/');
-PROJECT.addPackageIgnore('cdk.json');
-PROJECT.addPackageIgnore('**venv');
-PROJECT.addPackageIgnore('**Justfile');
-PROJECT.addPackageIgnore('hello/');
-
-PROJECT.synth();
+project.synth();
