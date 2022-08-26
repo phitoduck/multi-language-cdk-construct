@@ -16,20 +16,21 @@ unzip-python: unzip-python-wheel
 publish-from-local-machine:
     #!/bin/bash
     export TWINE_USERNAME="aws"
-    export TWINE_PASSWORD=`aws codeartifact login \
+    export TWINE_PASSWORD=$(aws codeartifact login \
         --profile {{AWS_PROFILE}} \
         --tool twine \
         --repository ai-package-index \
         --domain ai-package-index \
-        --domain-owner 785465075102`
-    export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint \
+        --domain-owner 785465075102)
+    export TWINE_REPOSITORY_URL=$(aws codeartifact get-repository-endpoint \
         --profile {{AWS_PROFILE}} \
         --domain ai-package-index \
         --domain-owner 785465075102 \
         --repository ai-package-index \
         --format pypi \
         --query repositoryEndpoint \
-        --output text`
+        --output text)
+    npx projen release
     
 
 publish-ci:

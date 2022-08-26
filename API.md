@@ -2,39 +2,39 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
-### SpecialBucket <a name="SpecialBucket" id="multi-language-construct-eric.SpecialBucket"></a>
+### SpecialBucket <a name="SpecialBucket" id="multi-language-construct.SpecialBucket"></a>
 
-#### Initializers <a name="Initializers" id="multi-language-construct-eric.SpecialBucket.Initializer"></a>
+#### Initializers <a name="Initializers" id="multi-language-construct.SpecialBucket.Initializer"></a>
 
 ```typescript
-import { SpecialBucket } from 'multi-language-construct-eric'
+import { SpecialBucket } from 'multi-language-construct'
 
 new SpecialBucket(scope: Construct, id: string, props: SpecialBucketProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.Initializer.parameter.props">props</a></code> | <code><a href="#multi-language-construct-eric.SpecialBucketProps">SpecialBucketProps</a></code> | *No description.* |
+| <code><a href="#multi-language-construct.SpecialBucket.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#multi-language-construct.SpecialBucket.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#multi-language-construct.SpecialBucket.Initializer.parameter.props">props</a></code> | <code><a href="#multi-language-construct.SpecialBucketProps">SpecialBucketProps</a></code> | *No description.* |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="multi-language-construct-eric.SpecialBucket.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="multi-language-construct.SpecialBucket.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="multi-language-construct-eric.SpecialBucket.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="multi-language-construct.SpecialBucket.Initializer.parameter.id"></a>
 
 - *Type:* string
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="multi-language-construct-eric.SpecialBucket.Initializer.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="props" id="multi-language-construct.SpecialBucket.Initializer.parameter.props"></a>
 
-- *Type:* <a href="#multi-language-construct-eric.SpecialBucketProps">SpecialBucketProps</a>
+- *Type:* <a href="#multi-language-construct.SpecialBucketProps">SpecialBucketProps</a>
 
 ---
 
@@ -42,12 +42,12 @@ new SpecialBucket(scope: Construct, id: string, props: SpecialBucketProps)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.addTags">addTags</a></code> | Recursively apply tags to all resources declared in the construct. |
+| <code><a href="#multi-language-construct.SpecialBucket.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#multi-language-construct.SpecialBucket.addTags">addTags</a></code> | Recursively apply tags to all resources declared in the construct. |
 
 ---
 
-##### `toString` <a name="toString" id="multi-language-construct-eric.SpecialBucket.toString"></a>
+##### `toString` <a name="toString" id="multi-language-construct.SpecialBucket.toString"></a>
 
 ```typescript
 public toString(): string
@@ -55,7 +55,7 @@ public toString(): string
 
 Returns a string representation of this construct.
 
-##### `addTags` <a name="addTags" id="multi-language-construct-eric.SpecialBucket.addTags"></a>
+##### `addTags` <a name="addTags" id="multi-language-construct.SpecialBucket.addTags"></a>
 
 ```typescript
 public addTags(): void
@@ -70,14 +70,14 @@ resources that are registered after the constructor finishes.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#multi-language-construct.SpecialBucket.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### `isConstruct` <a name="isConstruct" id="multi-language-construct-eric.SpecialBucket.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="multi-language-construct.SpecialBucket.isConstruct"></a>
 
 ```typescript
-import { SpecialBucket } from 'multi-language-construct-eric'
+import { SpecialBucket } from 'multi-language-construct'
 
 SpecialBucket.isConstruct(x: any)
 ```
@@ -98,7 +98,7 @@ library can be accidentally installed, and `instanceof` will behave
 unpredictably. It is safest to avoid using `instanceof`, and using
 this type-testing method instead.
 
-###### `x`<sup>Required</sup> <a name="x" id="multi-language-construct-eric.SpecialBucket.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="multi-language-construct.SpecialBucket.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -110,12 +110,12 @@ Any object.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#multi-language-construct-eric.SpecialBucket.property.bucket">bucket</a></code> | <code>aws-cdk-lib.aws_s3.Bucket</code> | *No description.* |
+| <code><a href="#multi-language-construct.SpecialBucket.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#multi-language-construct.SpecialBucket.property.bucket">bucket</a></code> | <code>aws-cdk-lib.aws_s3.Bucket</code> | *No description.* |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="multi-language-construct-eric.SpecialBucket.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="multi-language-construct.SpecialBucket.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -127,7 +127,7 @@ The tree node.
 
 ---
 
-##### `bucket`<sup>Required</sup> <a name="bucket" id="multi-language-construct-eric.SpecialBucket.property.bucket"></a>
+##### `bucket`<sup>Required</sup> <a name="bucket" id="multi-language-construct.SpecialBucket.property.bucket"></a>
 
 ```typescript
 public readonly bucket: Bucket;
@@ -140,12 +140,12 @@ public readonly bucket: Bucket;
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### SpecialBucketProps <a name="SpecialBucketProps" id="multi-language-construct-eric.SpecialBucketProps"></a>
+### SpecialBucketProps <a name="SpecialBucketProps" id="multi-language-construct.SpecialBucketProps"></a>
 
-#### Initializer <a name="Initializer" id="multi-language-construct-eric.SpecialBucketProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="multi-language-construct.SpecialBucketProps.Initializer"></a>
 
 ```typescript
-import { SpecialBucketProps } from 'multi-language-construct-eric'
+import { SpecialBucketProps } from 'multi-language-construct'
 
 const specialBucketProps: SpecialBucketProps = { ... }
 ```
@@ -154,11 +154,11 @@ const specialBucketProps: SpecialBucketProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#multi-language-construct-eric.SpecialBucketProps.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#multi-language-construct.SpecialBucketProps.property.name">name</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `name`<sup>Required</sup> <a name="name" id="multi-language-construct-eric.SpecialBucketProps.property.name"></a>
+##### `name`<sup>Required</sup> <a name="name" id="multi-language-construct.SpecialBucketProps.property.name"></a>
 
 ```typescript
 public readonly name: string;

@@ -1,6 +1,6 @@
 {
-  "name": "multi-language-construct-eric",
-  "description": "Eric's first ever multi-language construct.",
+  "name": "multi-language-construct",
+  "description": "Eric's first multi-language construct.",
   "repository": {
     "type": "git",
     "url": "https://github.com/eric.riddoch/multi-language-construct.git"
@@ -19,11 +19,10 @@
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
     "package:python": "npx projen package:python",
-    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
-    "release": "npx projen release",
+    "release:trunk": "npx projen release:trunk",
     "test": "npx projen test",
     "test:update": "npx projen test:update",
     "test:watch": "npx projen test:watch",
@@ -64,10 +63,6 @@
   "peerDependencies": {
     "aws-cdk-lib": "^2.39.0",
     "constructs": "^10.0.5"
-  },
-  "dependencies": {
-    "@aws-cdk/aws-apigatewayv2-alpha": "^2.39.0-alpha.0",
-    "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.39.0-alpha.0"
   },
   "dependencies": {
     "@aws-cdk/aws-apigatewayv2-alpha": "^2.39.0-alpha.0",
@@ -124,11 +119,6 @@
   "jsii": {
     "outdir": "dist",
     "targets": {
-      "python": {
-        "distName": "multi-language-construct-eric",
-        "module": "multi_language_construct_eric"
-      }
-    
       "python": {
         "distName": "multi-language-construct-eric",
         "module": "multi_language_construct_eric"

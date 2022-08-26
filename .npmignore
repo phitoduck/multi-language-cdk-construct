@@ -12,7 +12,6 @@ junit.xml
 !/lib/
 !/lib/**/*.js
 !/lib/**/*.d.ts
-dist
 /tsconfig.json
 /.github/
 /.vscode/
@@ -21,9 +20,9 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
-cdk.out/
-cdk.json
+**cdk.out
 **venv
-**Justfile
-hello/
-dist copy
+dist
+bin
+images
+test
