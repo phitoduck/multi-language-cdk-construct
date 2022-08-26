@@ -21,3 +21,9 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
+cdk.out/
+cdk.json
+**venv
+**Justfile
+hello/
+dist copy
