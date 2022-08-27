@@ -1,7 +1,11 @@
 AWS_PROFILE := "ben-ai-sandbox"
+CODE_ARTIFACT_DOMAIN := "ai-package-index"
+
+# build:
+#     npx projen build
 
 build:
-    npx projen build
+    npm run build
 
 unzip-python-wheel:
     cd dist/python/ && unzip -o *.whl
@@ -13,36 +17,52 @@ unzip-python: unzip-python-wheel
     && echo "/usr/bin/tar –xvzf $TAR_FNAME" \
     && /usr/bin/tar –xvzf "$TAR_FNAME"
 
-publish-from-local-machine:
+install-twine:
+    which twine || python -m pip install twine
+
+publish-from-local-machine: install-twine
     #!/bin/bash
+
     export TWINE_USERNAME="aws"
-    export TWINE_PASSWORD=$(aws codeartifact login \
+    # aws codeartifact login \
+    #     --profile {{AWS_PROFILE}} \
+    #     --tool twine \
+    #     --repository ai-package-index \
+    #     --domain ai-package-index \
+    #     --domain-owner $AWS_ACCOUNT_ID
+
+    AWS_ACCOUNT_ID=`aws sts get-caller-identity \
+        --query 'Account' \
+        --output text \
+        --profile ben-ai-sandbox`
+
+    export TWINE_USERNAME=aws
+    export TWINE_PASSWORD=`aws codeartifact get-authorization-token \
         --profile {{AWS_PROFILE}} \
-        --tool twine \
-        --repository ai-package-index \
-        --domain ai-package-index \
-        --domain-owner 785465075102)
-    export TWINE_REPOSITORY_URL=$(aws codeartifact get-repository-endpoint \
+        --domain {{CODE_ARTIFACT_DOMAIN}} \
+        --domain-owner $AWS_ACCOUNT_ID \
+        --query authorizationToken \
+        --output text`
+    export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint \
         --profile {{AWS_PROFILE}} \
-        --domain ai-package-index \
-        --domain-owner 785465075102 \
+        --domain {{CODE_ARTIFACT_DOMAIN}} \
+        --domain-owner $AWS_ACCOUNT_ID \
         --repository ai-package-index \
         --format pypi \
         --query repositoryEndpoint \
-        --output text)
-    # npx projen release:trunk
-    echo TWINE_REPOSITORY_URL $TWINE_REPOSITORY_URL
-    echo TWINE_USERNAME $TWINE_USERNAME 
-    echo TWINE_PASSWORD $TWINE_PASSWORD    
+        --output text`
 
-publish-ci:
+    twine upload ./dist/python/*
+    
+
+publish-ci: install-twine
     #!/bin/bash
     export TWINE_USERNAME="aws"
-    export TWINE_PASSWORD=`aws codeartifact login \
+    aws codeartifact login \
         --tool twine \
         --repository ai-package-index \
         --domain ai-package-index \
-        --domain-owner 785465075102`
+        --domain-owner 785465075102
     export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint \
         --domain ai-package-index \
         --domain-owner 785465075102 \
@@ -50,4 +70,6 @@ publish-ci:
         --format pypi \
         --query repositoryEndpoint \
         --output text`
+
+    
     

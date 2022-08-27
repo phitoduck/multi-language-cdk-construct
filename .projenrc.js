@@ -1,10 +1,10 @@
 /**
  * NOTE: this file does nothing :(
- * 
+ *
  * It was once a lovely config file used for projen, but
  * due to some limitations of projen (see the README), I
  * had to run "npx projen eject".
- * 
+ *
  * This file is only here for historical purposes, because
  * this repo is meant to be a reference for future me.
  */
@@ -25,9 +25,9 @@ const PRIVATE_NPM_CONFIG = {
 const PRIVATE_PYPI_CONFIG = {
   distName: 'multi-language-construct-eric',
   module: 'multi_language_construct_eric',
-  twineUsernameSecret: "TWINE_USERNAME",
-  twinePasswordSecret: "TWINE_PASSWORD",
-  twineRegistryUrl: "my-aws-codeartifact-registry.com",
+  twineUsernameSecret: 'TWINE_USERNAME',
+  twinePasswordSecret: 'TWINE_PASSWORD',
+  twineRegistryUrl: 'my-aws-codeartifact-registry.com',
 };
 
 const PACKAGE_META = {

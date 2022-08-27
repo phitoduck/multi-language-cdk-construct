@@ -124,9 +124,25 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         run: |
-          # fetch a twine password from AWS and configure the twine CLI
+          echo "what is inside of dist?"
+          ls dist
+
+          echo "what is inside of that?"
+          ls dist/*
+
+          echo "fetch a twine password from AWS and configure the twine CLI"
           AWS_ACCOUNT=`aws sts get-caller-identity --query 'Account' --output text`
+          echo "account id: $AWS_ACCOUNT"
           aws codeartifact get-authorization-token --domain ai-package-index --domain-owner $AWS_ACCOUNT --query authorizationToken --output text
+          
+          export TWINE_REPOSITORY_URL=$(aws codeartifact get-repository-endpoint \
+            --domain ai-package-index \
+            --domain-owner 785465075102 \
+            --repository ai-package-index \
+            --format pypi \
+            --query repositoryEndpoint \
+            --output text)
+          
           twine upload dist/python/*
         env:
           TWINE_USERNAME: aws

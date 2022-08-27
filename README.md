@@ -51,3 +51,29 @@ I'm pleased to see that this projen template includes:
 - tests and enforcement that they pass
 - an `npx projen build` command that 
 
+# Insights
+
+- `projen` seems to be extendable. They call it "Software CDK".
+- `projen` enforces that certain files cannot be changed; that was genuinely awesome
+  until the template fundamentally didn't support deploying to CodeArtifact;
+  I think we could learn from the way `projen` approached this problem. Their
+  motto is "Templates are evil" (you make 50 projects with them and things get
+  out of control)
+- There is an `awscdk-construct` and `cdktf-construct` template you
+  can use. They both derive from a `jsii` project which has tooling
+  for generating the JSII packages in different languages. This feature is
+  great.
+- The projen opinions are *veeeery* coupled to GitHub. 
+- It must have been designed
+  primarily for open-source constructs, because it doesn't currently have a good
+  built-in way to publish to a private npm/PyPI/maven repo.
+- by default, all files/folders end up in the typescript package (and therefore
+  the python, .NET, etc. packages since the JSII gets zipped inside the latter) unless
+  they are added to `.npmignore`.
+
+# Success! (with Python)
+
+I've wondered for a long time if the README was visible in the AWS Console. It is!
+Sadly, images don't show up there.
+
+![](./images/published-package.png)

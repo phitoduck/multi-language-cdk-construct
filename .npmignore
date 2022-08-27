@@ -23,5 +23,4 @@ tsconfig.tsbuildinfo
 **venv
 dist
 bin
-images
 test
