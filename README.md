@@ -35,6 +35,14 @@ name because I think both python *and* TypeScript packages will go there.
 
 ![](./images/pypi-repo.png)
 
+### Fail!
+
+I learned that this project does not support pushing to CodeArtifact without
+manually resetting a CodeArtifact auth token in the GitHub secrets every single day :(
+
+They say this is on their roadmap, but it involves two projects, so it feels unlikely
+to be soon. So, I ran `npx projen eject` to regain control 
+
 ## My reaction to `projen` and TypeScript
 
 I'm pleased to see that this projen template includes:

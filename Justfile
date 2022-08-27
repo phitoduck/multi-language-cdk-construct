@@ -30,8 +30,10 @@ publish-from-local-machine:
         --format pypi \
         --query repositoryEndpoint \
         --output text)
-    npx projen release:trunk
-    
+    # npx projen release:trunk
+    echo TWINE_REPOSITORY_URL $TWINE_REPOSITORY_URL
+    echo TWINE_USERNAME $TWINE_USERNAME 
+    echo TWINE_PASSWORD $TWINE_PASSWORD    
 
 publish-ci:
     #!/bin/bash

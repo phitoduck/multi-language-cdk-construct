@@ -1,10 +1,21 @@
+/**
+ * NOTE: this file does nothing :(
+ * 
+ * It was once a lovely config file used for projen, but
+ * due to some limitations of projen (see the README), I
+ * had to run "npx projen eject".
+ * 
+ * This file is only here for historical purposes, because
+ * this repo is meant to be a reference for future me.
+ */
+
 const { awscdk } = require('projen');
 
 const CDK_VERSION = '2.39.0';
-const GIT_IGNORE_PATTERNS = ["**cdk.out", "**venv", "dist"]
+const GIT_IGNORE_PATTERNS = ['**cdk.out', '**venv', 'dist'];
 
 // glob patterns to exclude from published npm/python wheels
-const NPM_IGNORE_PATTERNS = [...GIT_IGNORE_PATTERNS, "bin", "images", "test"]
+const NPM_IGNORE_PATTERNS = [...GIT_IGNORE_PATTERNS, 'bin', 'images', 'test'];
 
 const PRIVATE_NPM_CONFIG = {
   npmRegistryUrl: process.env.NPM_REGISTRY_URL,
@@ -14,9 +25,9 @@ const PRIVATE_NPM_CONFIG = {
 const PRIVATE_PYPI_CONFIG = {
   distName: 'multi-language-construct-eric',
   module: 'multi_language_construct_eric',
-  twineUsernameSecret: process.env.TWINE_USERNAME,
-  twinePasswordSecret: process.env.TWINE_PASSWORD,
-  twineRegistryUrl: process.env.TWINE_REGISTRY_URL,
+  twineUsernameSecret: "TWINE_USERNAME",
+  twinePasswordSecret: "TWINE_PASSWORD",
+  twineRegistryUrl: "my-aws-codeartifact-registry.com",
 };
 
 const PACKAGE_META = {
@@ -48,8 +59,8 @@ const PROJECT = new awscdk.AwsCdkConstructLibrary({
 });
 
 
-GIT_IGNORE_PATTERNS.map(pattern => PROJECT.gitignore.addPatterns(pattern))
-NPM_IGNORE_PATTERNS.map(pattern => PROJECT.npmignore.addPatterns(pattern))
+GIT_IGNORE_PATTERNS.map(pattern => PROJECT.gitignore.addPatterns(pattern));
+NPM_IGNORE_PATTERNS.map(pattern => PROJECT.npmignore.addPatterns(pattern));
 
 PROJECT.synth();
 
