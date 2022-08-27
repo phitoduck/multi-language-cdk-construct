@@ -24,6 +24,14 @@ touch ./bin/app.ts
 # ... filled out this file based on the boilerplate typescript template
 ```
 
+Eventually I ejected:
+
+```bash
+npx projen eject
+# helps some npm scripts to continue to work
+yarn add projen --save-dev
+```
+
 ## Pushing to private NPM and PyPI server
 
 I created a private PyPI server here:
@@ -74,6 +82,11 @@ I'm pleased to see that this projen template includes:
   be run with `npm run <subcommand>`. We only have subcommands for *publishing*
   JS and Python. That's because we only configured those two publishing options
   in the `.projenrc.js` before ejecting.
+- `npx projen bump` is surprisingly important. You need to run it at least once
+  for the `npm run bump` and `npm run release:trunk` commands to be available.
+  The version bumps by having commit messages like: `feat: a minor bump` or
+  `fix: a patch bump`. This scheme is called "conventional commits". Find the RFC
+  online. I'm not sure how to do a Major bump yet...
 
 # Success! (with Python)
 

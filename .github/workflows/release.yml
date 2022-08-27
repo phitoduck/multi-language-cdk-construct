@@ -89,11 +89,13 @@ jobs:
       - name: Collect js Artifact
         run: mv .repo/dist dist
       - name: Release
-        run: npx -p publib@latest publib-npm
+        run: |
+          # TODO: use aws cli to get credentials here (may need to install cli)
+          npx -p publib@latest publib-npm
         env:
           NPM_DIST_TAG: latest
-          NPM_REGISTRY: registry.npmjs.org
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_REGISTRY: registry.npmjs.org  # TODO: remove this
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # TODO: replace this with aws creds
   release_pypi:
     name: Publish to PyPI
     needs: release

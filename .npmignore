@@ -19,8 +19,12 @@ junit.xml
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
+
 **cdk.out
 **venv
 dist
 bin
 test
+images
+hello
+Justfile
