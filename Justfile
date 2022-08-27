@@ -5,8 +5,16 @@ CODE_ARTIFACT_REPOSITORY := "ai-package-index"
 # build:
 #     npx projen build
 
+install:
+    yarn install
+
 build:
     npm run build
+
+# use "feat: ..." and "fix: ..." in commit messages to have
+# this recipe bump the version and update the changelog properly
+bump-version:
+    npx projen bump
 
 unzip-python-wheel:
     cd dist/python/ && unzip -o *.whl
@@ -23,34 +31,20 @@ install-twine:
 
 publish-js-local:
     #!/bin/bash
-    AWS_ACCOUNT_ID=`aws sts get-caller-identity \
-        --query 'Account' \
-        --output text \
-        --profile ben-ai-sandbox`
     export AWS_ACCESS_KEY_ID=`aws configure get {{AWS_PROFILE}}.aws_access_key_id`
     export AWS_SECRET_ACCESS_KEY=`aws configure get {{AWS_PROFILE}}.aws_secret_access_key`
-    # export NPM_REGISTRY=`aws codeartifact get-repository-endpoint \
-    #     --profile {{AWS_PROFILE}} \
-    #     --domain ai-package-index \
-    #     --domain-owner $AWS_ACCOUNT_ID \
-    #     --repository ai-package-index \
-    #     --format npm \
-    #     --query repositoryEndpoint \
-    #     --output text`
-    # echo "first attempt at npm registry: $NPM_REGISTRY"
-    # export NPM_REGISTRY=`aws codeartifact get-repository-endpoint \
-    #     --domain {{CODE_ARTIFACT_DOMAIN}} \
-    #     --domain-owner $AWS_ACCOUNT_ID \
-    #     --repository {{CODE_ARTIFACT_REPOSITORY}} \
-    #     --format npm`
-    echo "NPM_REGISTRY $NPM_REGISTRY"
 
-    # npx -p publib@latest publib-npm
+    AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+    AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+        aws codeartifact login --tool npm --repository ai-package-index --domain ai-package-index --domain-owner 785465075102 --profile ben-ai-sandbox \
+    && npm publish dist/js/*
 
-    # AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-    # AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-    #     aws codeartifact login --tool npm --repository ai-package-index --domain ai-package-index --domain-owner 785465075102 --profile ben-ai-sandbox \
-    # && npm publish dist/js/*
+
+# I can't get this one to work
+publish-js-local-publib:
+    #!/bin/bash
+    export AWS_ACCESS_KEY_ID=`aws configure get {{AWS_PROFILE}}.aws_access_key_id`
+    export AWS_SECRET_ACCESS_KEY=`aws configure get {{AWS_PROFILE}}.aws_secret_access_key`
 
     AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
@@ -58,14 +52,6 @@ publish-js-local:
 
 publish-python-local: install-twine
     #!/bin/bash
-
-    export TWINE_USERNAME="aws"
-    # aws codeartifact login \
-    #     --profile {{AWS_PROFILE}} \
-    #     --tool twine \
-    #     --repository ai-package-index \
-    #     --domain ai-package-index \
-    #     --domain-owner $AWS_ACCOUNT_ID
 
     AWS_ACCOUNT_ID=`aws sts get-caller-identity \
         --query 'Account' \
@@ -90,7 +76,12 @@ publish-python-local: install-twine
 
     twine upload ./dist/python/*
     
+release-local: clean-pre-publish bump-version build publish-python-local publish-js-local
 
+clean-pre-publish:
+    rm -rf lib/ dist/ coverage/ cdk.out/ test-reports/
+
+# untested; probably doesn't work
 publish-ci: install-twine
     #!/bin/bash
     export TWINE_USERNAME="aws"
