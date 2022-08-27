@@ -70,10 +70,14 @@ I'm pleased to see that this projen template includes:
 - by default, all files/folders end up in the typescript package (and therefore
   the python, .NET, etc. packages since the JSII gets zipped inside the latter) unless
   they are added to `.npmignore`.
+- after ejecting, we `package.json` shows scripts like a Justfile/makefile that can
+  be run with `npm run <subcommand>`. We only have subcommands for *publishing*
+  JS and Python. That's because we only configured those two publishing options
+  in the `.projenrc.js` before ejecting.
 
 # Success! (with Python)
 
 I've wondered for a long time if the README was visible in the AWS Console. It is!
-Sadly, images don't show up there.
+Sadly, images don't show up there. They probably aren't making it 
 
 ![](./images/published-package.png)

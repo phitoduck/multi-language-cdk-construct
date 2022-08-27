@@ -70,6 +70,3 @@ publish-ci: install-twine
         --format pypi \
         --query repositoryEndpoint \
         --output text`
-
-    
-    
