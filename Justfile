@@ -76,10 +76,12 @@ publish-python-local: install-twine
 
     twine upload ./dist/python/*
     
-release-local: clean-pre-publish bump-version build publish-python-local publish-js-local
+publish-local: publish-python-local publish-js-local
 
-clean-pre-publish:
+clean-pre-build:
     rm -rf lib/ dist/ coverage/ cdk.out/ test-reports/
+
+build-and-publish: clean-pre-build build publish-local
 
 # untested; probably doesn't work
 publish-ci: install-twine

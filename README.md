@@ -87,6 +87,7 @@ I'm pleased to see that this projen template includes:
   The version bumps by having commit messages like: `feat: a minor bump` or
   `fix: a patch bump`. This scheme is called "conventional commits". Find the RFC
   online. I'm not sure how to do a Major bump yet...
+- We can manually version bump by changing `"version"` in `package.json`
 
 # Success! (with Python)
 
